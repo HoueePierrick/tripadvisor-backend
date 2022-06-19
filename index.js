@@ -6,6 +6,9 @@ app.use(formidableMiddleware());
 
 require('dotenv').config()
 
+const cors = require(`cors`)
+app.use(cors())
+
 const mailgun = require("mailgun-js");
 const DOMAIN = process.env.DOMAIN_NAME;
 const mg = mailgun({apiKey: process.env.API_KEY, domain: DOMAIN});
@@ -18,7 +21,7 @@ const data = {
 	text: 'Testing some Mailgun awesomness!'
 };
 
-app.get('/connexion', function (req, res) {
+app.post('/connexion', function (req, res) {
     try {
         const collected = Object.keys(req.fields);
         if(collected.includes(`Prénom`) && collected.includes(`Nom`) && collected.includes(`Email`) && collected.includes(`Text`)) {
