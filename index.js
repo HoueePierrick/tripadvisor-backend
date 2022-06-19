@@ -13,7 +13,7 @@ const mailgun = require("mailgun-js");
 const DOMAIN = process.env.DOMAIN_NAME;
 const mg = mailgun({apiKey: process.env.API_KEY, domain: DOMAIN});
 
-const isemail = require(`../../BackEnd/Vinted/Usefull functions/email`)
+const isemail = require(`./Usefull functions/email`)
 const data = {
 	from: 'TripAdvisor <sofialioui@gmail.com>',
 	to: 'houee.pierrick@gmail.com',
